@@ -2,8 +2,8 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import routers from './routers'
 import morgan from 'morgan'
-// import 'reflect-metadata'
-// import './db/config'
+import 'reflect-metadata'
+import './db/config'
 import blockIp from './middleware/ip-config'
 import jwt from './middleware/jwt'
 
@@ -15,9 +15,11 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 
 app.use((req, res, next) => blockIp(req, res, next))
+
 app.get('/test', (req, res) => {
   res.status(200).send('Subiu')
 })
+
 app.use(jwt)
 app.use(routers)
 
