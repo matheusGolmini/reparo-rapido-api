@@ -1,0 +1,64 @@
+{
+	"info": {
+		"_postman_id": "2db4eb70-5c95-4341-be84-9b122947cac9",
+		"name": "Files",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "File_Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pathIntial\": \"/Users/yago/Downloads/test.docx\",\n    \"pathEnd\": \"./src/storage/documento.doc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/file/copy",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"file",
+						"copy"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "File_Move",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"pathIntial\": \"/Users/yago/Downloads/test.docx\",\n    \"pathEnd\": \"./src/storage/documento.doc\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/file/move",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"file",
+						"move"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "a02e953a-9f95-4cfc-a1df-c6f261102801",
+		"name": "Client",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PrecisaAutenticar",
+			"item": [
+				{
+					"name": "Get_Clients",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update_Client",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "\n{\n    \"cpf\": \"085.780.999-06\",\n    \"lastName\": \"alterado de ramos\",\n    \"email\": \"alterado@gmail.com\",\n    \"firstName\": \"alterado\",\n    \"fullName\":\"alterado Lopeador de ramos\",\n    \"phone\": \"41 999999999\",\n    \"password\": \"senha123\",\n    \"passwordConfirm\": \"senha123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/clients?email=jorge@gmail.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "jorge@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Client",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/alterado@gmail.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"alterado@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_Client",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/alterado@gmail.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"alterado@gmail.com"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddAddress",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"city\": \"Curitiba\",\n    \"country\": \"Brasil\",\n    \"number\": 299,\n    \"state\": \"PR\",\n    \"street\": \"Perto da do indio\",\n    \"zipCode\": \"0918737376\",\n    \"id_client\": \"e05c842f-b615-4aad-80b2-6a0e2c214f1d\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/clients/address",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddCreditCard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n   \"numberCard\": \"123456789\",\n    \"expirationDate\": \"12/2025\",\n    \"name\": \"Nando Ramos\",\n    \"cvcCode\": 498,\n    \"id_client\": \"e05c842f-b615-4aad-80b2-6a0e2c214f1d\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/clients/creditCard",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"creditCard"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Client_By_Cpf",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/clients/cpf/085.780.999-06",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"clients",
+								"cpf",
+								"085.780.999-06"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Create_Client",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"cpf\": \"085.780.999-06\",\n    \"lastName\": \"Lopeador de ramos\",\n    \"email\": \"jorge@gmail.com\",\n    \"firstName\": \"jorge\",\n    \"fullName\":\"jorge Lopeador de ramos\",\n    \"phone\": \"41 999999999\",\n    \"password\": \"senha123\",\n    \"passwordConfirm\": \"senha123\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/register/client",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register",
+						"client"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginAuth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1f94ec99-5328-41c4-a2f5-62d067320415",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"jwt\", jsonData.jwt);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "senha123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "jorge@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"table\": \"client\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

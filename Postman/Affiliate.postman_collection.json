@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "66de76cd-a7c5-4acd-9ae9-535d07f61e77",
+		"name": "Affiliate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PrecisaAutenticar",
+			"item": [
+				{
+					"name": "Get_Affiliates",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/affiliates",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"affiliates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Affiliate",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/affiliates/NandoLoiro@gmail.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"affiliates",
+								"NandoLoiro@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update_Affiliates",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"cpf\": \"085.780.999-56\",\n        \"lastName\": \"de ramos\",\n        \"email\": \"HenriqueLoiro@gmail.com\",\n        \"firstName\": \"Henrique\",\n        \"fullName\": \"Loiro de ramos\",\n        \"phone\": \"41 9976287272\",\n        \"password\": \"senhasenha123\",\n        \"passwordConfirm\": \"senhasenha123\"\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/affiliates?email=NandoLoiro@gmail.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"affiliates"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "NandoLoiro@gmail.com"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete_Affiliates",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/affiliates/alterado@gmail.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"affiliates",
+								"alterado@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Affiliates_By_CPF",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/affiliates/cpf/085.780.009-56",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"affiliates",
+								"cpf",
+								"085.780.009-56"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddAddress",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"city\": \"Curitiba\",\n    \"country\": \"Brasil\",\n    \"number\": 0,\n    \"state\": \"PR\",\n    \"street\": \"Rua do Henrique\",\n    \"zipCode\": \"837729273\",\n    \"id_affiliate\": \"6f2c1b44-4310-40ef-a44c-f1ebd7651576\"\n}\n ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/affiliates/address",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"affiliates",
+								"address"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddCreditCard",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"numberCard\": \"123456789\",\n    \"expirationDate\": \"12/2025\",\n    \"name\": \"Nando Ramos\",\n    \"cvcCode\": 498,\n    \"id_affiliate\": \"6f2c1b44-4310-40ef-a44c-f1ebd7651576\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/affiliates/creditCard",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"affiliates",
+								"creditCard"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Create_Affiliates",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"cpf\": \"085.780.009-56\",\n    \"lastName\": \"de ramos\",\n    \"email\": \"NandoLoiro@gmail.com\",\n    \"firstName\": \"Nando\",\n    \"fullName\":\"Loiro de ramos\",\n    \"phone\": \"41 9976287272\",\n    \"password\": \"senhasenha123\",\n    \"passwordConfirm\": \"senhasenha123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/register/affiliate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"register",
+						"affiliate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LoginAuth",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d7389cd1-408a-4726-be99-b2d3f5bfe069",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8f8c4c94-ee01-481a-bddd-879f870835cb",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);",
+							"pm.environment.set(\"jwt\", jsonData.jwt);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "senhasenha123",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "test@gmail.com",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"table\": \"affiliate\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
