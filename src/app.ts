@@ -15,6 +15,9 @@ app.use(morgan('dev'))
 app.use(bodyParser.json())
 
 app.use((req, res, next) => blockIp(req, res, next))
+app.get('/test', (req, res) => {
+  res.status(200).send('Subiu')
+})
 app.use(jwt)
 app.use(routers)
 
