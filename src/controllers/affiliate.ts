@@ -49,11 +49,11 @@ export class AddAffiliateCreditCard implements Controller {
 export class AddAffiliateSkill implements Controller {
     async handles(req: HttpRequest): Promise<HttpResponse> {
         try {
-            const skill = req.body
+            const body = req.body
 
             const repoAffiliate = getRepository('affiliate')
             const resultAffiliate: any = await repoAffiliate.findOne(
-                skill.affiliateId
+                body.affiliateId
             )
 
             if (!resultAffiliate) {
@@ -64,7 +64,7 @@ export class AddAffiliateSkill implements Controller {
 
             const repoSkill = getRepository('skill')
             const resultSkill: any = await repoSkill.findOne(
-                skill.skillId
+                body.skillId
             )
 
             if (!resultSkill) {
@@ -75,7 +75,7 @@ export class AddAffiliateSkill implements Controller {
 
              const repoSkillAffiliate = getRepository('affiliate_skills')
 
-             const sav = await repoSkillAffiliate.save(skill)
+             const sav = await repoSkillAffiliate.save(body)
              if (sav) {
                  return ok(sav)
              }
@@ -96,6 +96,17 @@ export class AddAffiliateSkill implements Controller {
         async handles(req: HttpRequest): Promise<HttpResponse> {
             const { email } = req.params
             const repo = getRepository('affiliate')
+
+            const resultEmail = await repo.findOne({
+                email
+            })
+
+            if (!resultEmail) {
+                return badRequest({
+                    message: 'Email not found'
+                })
+            }
+
             const result = await repo.query(` select skill.name,affiliate_skills.time_skill from skill 
             inner join affiliate_skills on affiliate_skills."skillId" = skill.Id
             inner join affiliate on affiliate.id = affiliate_skills."affiliateId" 
@@ -109,27 +120,6 @@ export class AddAffiliateSkill implements Controller {
             })
         }
     }
-
-// export class AddAffiliateSkills implements Controller {
-//     async handles(req: HttpRequest): Promise<HttpResponse> {
-//         try {
-//             const { skills } = req.body
-//             console.log(skills)
-//             const repo = getRepository('affiliate_skills_skill')
-//             const result = await repo.save({
-//                 time_skill: '3 anos',
-//                 skillId: 'e0d09c51-73f5-4ac9-893a-6a74ab883959',
-//                 affiliateId: '5f0f7817-0449-4582-b939-e03966623a87'
-//             })
-//             return created(result)
-//         } catch (error) {
-//             console.log(error)
-//             return badRequest({
-//                 message: 'affiliate not found'
-//             })
-//         }
-//     }
-// }
 
 export class GetAffiliateByEmail implements Controller {
     async handles(req: HttpRequest): Promise<HttpResponse> {
@@ -204,6 +194,54 @@ export class DeleteAffiliate implements Controller {
 
         return badRequest({
             message: 'affiliate not found'
+        })
+    }
+}
+
+export class DeleteAffiliateSkill implements Controller {
+    async handles(req: HttpRequest): Promise<HttpResponse> {
+        const { email } = req.params
+        const { name } = req.params
+
+            const repoAffiliate = getRepository('affiliate')
+            const resultAffiliate: any = await repoAffiliate.findOne({
+                email
+            })
+
+            if (!resultAffiliate) {
+                return badRequest({
+                    message: 'affiliate not found'
+                })
+            }
+
+            const repoSkill = getRepository('skill')
+            const resultSkill: any = await repoSkill.findOne({
+                name
+            })
+
+            if (!resultSkill) {
+                return badRequest({
+                    message: 'Skill not found'
+                })
+            }
+
+            const repo = getRepository('affiliate_skills')
+            const sid = resultSkill.id
+            const fid = resultAffiliate.id
+
+            const resultQuery: any = await repo.query(`DELETE FROM affiliate_skills 
+            WHERE "affiliateId" = '${fid}' and "skillId" = '${sid}'`)
+
+            for (const entry of resultQuery) {
+                if (entry === 1) {
+                    return ok({
+                        message: `A skill ${name} foi deletada do usuário ${email}!`
+                    })
+                }
+            }
+
+        return badRequest({
+            message: 'Nothing found!'
         })
     }
 }

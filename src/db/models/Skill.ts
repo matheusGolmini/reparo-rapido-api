@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToMany } from 'typeorm'
+import { Column, Entity, JoinTable, ManyToMany } from 'typeorm'
 import Affiliate from './Affiliate'
 import DefaultAttributes from './DefaultAttributes'
 
@@ -7,6 +7,7 @@ export default class Skill extends DefaultAttributes {
     @Column()
     name: string
 
-    @ManyToMany(type => Affiliate)
+    @ManyToMany(type => Affiliate, { cascade: true })
+    @JoinTable({ name: 'affiliate_skills' })
     afilliate: Affiliate[]
 }

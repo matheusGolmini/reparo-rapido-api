@@ -13,7 +13,7 @@ export default class Affiliate extends People {
     @OneToMany(type => CreditCard, affiliate => Affiliate, { cascade: true, lazy: true })
     credit_card: CreditCard[]
 
-    @ManyToMany(type => Skill, { cascade: true, eager: true })
+    @ManyToMany(type => Skill, { eager: true })
     @JoinTable({ name: 'affiliate_skills' })
     skills: Skill[]
 

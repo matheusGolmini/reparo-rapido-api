@@ -72,6 +72,13 @@ const routes: AdaptRouters[] = [
         validationSchema: null,
         path: '/:email',
         action: new ControllerUser.DeleteAffiliate()
+    },
+    {
+        method: 'delete',
+        identifier: 'Delete_Affiliate_Skill',
+        validationSchema: null,
+        path: '/delete/:email/:name',
+        action: new ControllerUser.DeleteAffiliateSkill()
     }
 ]
 

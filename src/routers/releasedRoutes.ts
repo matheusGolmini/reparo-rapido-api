@@ -1,5 +1,4 @@
 import * as ControllerAuth from '../controllers/auth'
-import * as ControllerSkills from '../controllers/skill'
 import * as ControllerClient from '../controllers/client'
 import * as ControllerAffiliate from '../controllers/affiliate'
 import { AdaptRouters } from '../adpter/express/interface'
@@ -26,13 +25,6 @@ const routes: AdaptRouters[] = [
         validationSchema: null,
         path: '/register/affiliate',
         action: new ControllerAffiliate.AddAffiliate()
-    },
-    {
-        method: 'post',
-        identifier: 'Post_Skill',
-        validationSchema: null,
-        path: '/register/skills',
-        action: new ControllerSkills.AddSkill()
     }
 ]
 

@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "66de76cd-a7c5-4acd-9ae9-535d07f61e77",
+		"_postman_id": "d21baa5d-f067-4346-a4c6-06a2ef14e89e",
 		"name": "Affiliate",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -118,6 +118,30 @@
 					"response": []
 				},
 				{
+					"name": "Delete_Affiliate_Skill",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/affiliates/alterado@gmail.com",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"affiliates",
+								"alterado@gmail.com"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get_Affiliates_By_CPF",
 					"request": {
 						"method": "GET",
@@ -138,6 +162,17 @@
 								"cpf",
 								"085.780.009-56"
 							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get_Affiliates_Skill",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": ""
 						}
 					},
 					"response": []
@@ -207,6 +242,40 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "AddSkill",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "jwt",
+								"value": "{{jwt}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"affiliateId\": \"f876c657-9cc5-47e6-a598-5e3380d08c17\",\r\n    \"skillId\": \"260ff9d3-e320-42bf-acc4-34b020df09c7\",\r\n    \"time_skill\": \"3 anos\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/affiliates/skill/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"affiliates",
+								"skill",
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -244,7 +313,7 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "d7389cd1-408a-4726-be99-b2d3f5bfe069",
+						"id": "c90169b9-f899-4e45-8c98-8e045ad0f738",
 						"exec": [
 							""
 						],
@@ -254,7 +323,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8f8c4c94-ee01-481a-bddd-879f870835cb",
+						"id": "73272985-0deb-4610-92d7-632b81dafed4",
 						"exec": [
 							"var jsonData = JSON.parse(responseBody);",
 							"pm.environment.set(\"jwt\", jsonData.jwt);"
