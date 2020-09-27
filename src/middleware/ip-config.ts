@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import ips from '../../ips'
+import ips from '../ips'
 
 const blockIp = (req: Request, res: Response, next: NextFunction) => {
     // res.header('Access-Control-Allow-Origin', '192.168.15.5')
