@@ -1,6 +1,7 @@
-import dotenv from 'dotenv'
-
-dotenv.config()
+if (process.env.NODE_ENV && process.env.NODE_ENV === 'development') {
+  const dotenv = require('dotenv')
+  dotenv.config()
+}
 
 function getFromEnv(name: string): string {
   if (!process.env[name]) throw Error(`Required env ${name}`)
