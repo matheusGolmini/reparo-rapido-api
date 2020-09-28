@@ -5,15 +5,15 @@ createConnection({
     port: Number(process.env.DB_PORT) || 5432,
     username: process.env.DB_USERNAME || 'reparorapido_app',
     database: process.env.DB_DATABASE || 'reparorapido',
-    password: process.env.DB_PASS || '9J8H3ls#@xa=f3',
-    entities: [
-        'src/db/models/**/*.ts'
-    ],
-    migrations: [
-        'src/db/migrations/**/*.ts'
-    ],
-    cli: {
-        migrationsDir: 'src/db/migrations/',
-        entitiesDir: 'src/db/models'
-    }
+    password: process.env.DB_PASS || '9J8H3ls#@xa=f3'
+    // entities: [
+    //     'src/db/models/**/*.ts'
+    // ],
+    // migrations: [
+    //     'src/db/migrations/**/*.ts'
+    // ],
+    // cli: {
+    //     migrationsDir: 'src/db/migrations/',
+    //     entitiesDir: 'src/db/models'
+    // }
 })
