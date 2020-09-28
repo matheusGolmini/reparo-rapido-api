@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken'
-import config from '../config'
+// import config from '../config'
 
-const tokenPrivateKey = config().jwt_secret
+const tokenPrivateKey = process.env.JWT_SECRET || 'GHuiuy158kj'
 
 export const verifyJwt = (token: string) => {
-    return jwt.verify(token, tokenPrivateKey)
+    return jwt.verify(token, String(tokenPrivateKey))
 }
 
 export const getTokenFromHeaders = (authorization: string) => {
@@ -29,5 +29,5 @@ export const generateJwt = (id: string) => {
         id,
         session_start: new Date()
     }
-    return jwt.sign(payload, tokenPrivateKey, { expiresIn: '10h' })
+    return jwt.sign(payload, String(tokenPrivateKey), { expiresIn: '10h' })
 }
