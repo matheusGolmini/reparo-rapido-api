@@ -1,22 +1,25 @@
-// import configEnv from './src/config'
+import configEnv from './src/config'
 
-// const configDB = configEnv().db_postgres
+const configDB = configEnv().db_postgres
 
-// module.exports = {
-//   type: 'postgres',
-//   host: configDB.host || process.env.DB_HOST,
-//   port: Number(configDB.port) || process.env.DB_PORT,
-//   username: configDB.username || process.env.DB_USERNAME,
-//   password: configDB.password || process.env.DB_PASS,
-//   database: configDB.database || process.env.DB_DATABASE,
-//   entities: [
-//     'src/db/models/**/*.ts'
-//   ],
-//   migrations: [
-//     'src/db/migrations/**/*.ts'
-//   ],
-//   cli: {
-//     migrationsDir: 'src/db/migrations/',
-//     entitiesDir: 'src/db/models'
-//   }
-// }
+module.exports = {
+  type: 'postgres',
+  host: configDB.host,
+  port: Number(configDB.port),
+  username: configDB.username,
+  password: configDB.password,
+  database: configDB.database,
+  ssl: {
+    rejectUnauthorized: false
+  },
+  entities: [
+    configDB.entities
+  ],
+  migrations: [
+    configDB.migrations
+  ],
+  cli: {
+    migrationsDir: configDB.migrationsDir,
+    entitiesDir: configDB.entitiesDir
+  }
+}
