@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
-// import config from '../config'
+import config from '../config'
 
-const tokenPrivateKey = process.env.JWT_SECRET || 'GHuiuy158kj'
+const tokenPrivateKey = config().jwt_secret
 
 export const verifyJwt = (token: string) => {
     return jwt.verify(token, String(tokenPrivateKey))
